@@ -1,4 +1,5 @@
-var apiKEY = "fba9ebceabe00d55b72dc111e8106b60";
+var apiKEY = "c0955b95b1b4f37d644a512418fc63bc";
+// var apiKEY = "fba9ebceabe00d55b72dc111e8106b60";
 var city = "london";
 var requestUrl;
 
@@ -22,6 +23,7 @@ function getCityWeather(city) {
         return response.json();
       })
       .then(function (data) {
+        console.log(data);
         var lat = data.coord.lat;
         var lon = data.coord.lon;
         oneCallAPI(lat, lon);
@@ -52,4 +54,4 @@ function getCityWeather(city) {
   }
 }
 
-getCityWeather();
+getCityWeather(city);
