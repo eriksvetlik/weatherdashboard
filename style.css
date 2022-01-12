@@ -11,6 +11,16 @@ body {
   color: var(--primarycolor);
 }
 
+li {
+  margin-bottom: 15px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 .btn-outline-dark {
   color: var(--primarycolor);
   border-color: var(--primarycolor);
