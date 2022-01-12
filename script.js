@@ -111,6 +111,13 @@ function getCityWeather() {
           var uvIndex = document.createElement("h5");
           uvIndex.textContent = "UV Index: " + data.current.uvi;
           current.append(uvIndex);
+          if (data.current.uvi < 2) {
+            uvIndex.style.color = "green";
+          } else if (data.current.uvi > 2 && data.current.uvi < 7) {
+            uvIndex.style.color = "orange";
+          } else {
+            uvIndex.style.color = "red";
+          }
 
           for (var i = 0; i < 5; i++) {
             // create a card
