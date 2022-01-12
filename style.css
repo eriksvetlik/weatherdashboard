@@ -11,6 +11,10 @@ body {
   color: var(--primarycolor);
 }
 
+img {
+  max-width: 100px;
+}
+
 li {
   margin-bottom: 15px;
 }
@@ -19,6 +23,11 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+#future {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .btn-outline-dark {
@@ -31,7 +40,8 @@ ul {
   border-color: var(--primarycolor);
 }
 
-#future {
-  display: flex;
-  flex-wrap: wrap;
+.card {
+  padding: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
