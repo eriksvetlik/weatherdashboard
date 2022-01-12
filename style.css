@@ -30,3 +30,8 @@ ul {
   background-color: var(--primarycolor);
   border-color: var(--primarycolor);
 }
+
+#future {
+  display: flex;
+  flex-wrap: wrap;
+}
