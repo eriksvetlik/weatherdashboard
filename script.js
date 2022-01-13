@@ -7,11 +7,13 @@ var requestUrl;
 var searchForm = document.getElementById("searchForm");
 
 function getCityWeather() {
+  // if the user submits the search form, the city value is captured
   searchForm.addEventListener("submit", function (event) {
     city = document.getElementById("searchInput").value;
     weatherAPIs(event);
   });
 
+  // if the user selects a city button, the city value is captured
   cityList.onclick = function getCityFromButton(event) {
     city = event.target.textContent;
     weatherAPIs(event);
@@ -20,15 +22,17 @@ function getCityWeather() {
   function weatherAPIs(event) {
     event.preventDefault();
 
-    console.log(city);
     current.innerHTML = "";
     current.style =
       "border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.25rem; padding: 10px;";
     future.innerHTML = "";
+    // adds city to local storage
     localStorage.setItem(city, city);
 
     currentAPI();
 
+    // uses the Current Weather Data API to bring city name, icon, temp,
+    // humidity, wind speed, and lat/lon
     function currentAPI() {
       requestUrl =
         "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -40,14 +44,15 @@ function getCityWeather() {
       fetch(requestUrl)
         .then(function (response) {
           if (response.status === 404) {
-            console.log(response.status);
+            var name = document.createElement("h4");
+            name.textContent = "We couldn't find that city - try another!";
+            current.append(name);
+
             return;
           }
           return response.json();
         })
         .then(function (data) {
-          console.log(data);
-
           // name
           var name = document.createElement("h3");
           name.textContent = data.name;
@@ -86,6 +91,8 @@ function getCityWeather() {
         });
     }
 
+    // uses the One Call API to bring uv index, icon, future date,
+    // temp, humidity, and wind speed
     function oneCallAPI(lat, lon) {
       requestUrl =
         "https://api.openweathermap.org/data/2.5/onecall?lat=" +
@@ -99,14 +106,15 @@ function getCityWeather() {
       fetch(requestUrl)
         .then(function (response) {
           if (response.status === 404) {
-            console.log(response.status);
+            var name = document.createElement("h4");
+            name.textContent = "We couldn't find that city - try another!";
+            current.append(name);
+
             return;
           }
           return response.json();
         })
         .then(function (data) {
-          console.log(data);
-
           // uv index for current
           var uvIndex = document.createElement("h5");
           uvIndex.textContent = "UV Index: " + data.current.uvi;
@@ -157,12 +165,12 @@ function getCityWeather() {
     }
 
     city = "";
-
     cityList.innerHTML = "";
     createCityList();
   }
 }
 
+// retrieves values in local storage and creates buttons for each
 function createCityList() {
   for (var i = 0; i < localStorage.length; i++) {
     var cityListButton = document.createElement("button");
