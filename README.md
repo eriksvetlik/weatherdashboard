@@ -8,6 +8,8 @@ The user is also presented with a 5-day forecast that displays an icon represent
 
 City searches are saved to local storage and are listed on the page as a button. If the user selects a city button, that city's weather information will be loaded.
 
+HTML | CSS | Bootstrap | Javascript
+
 # Screenshot
 
 ![Screenshot of webpage](./images/homework-readme.png)
